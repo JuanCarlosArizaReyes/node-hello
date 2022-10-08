@@ -10,16 +10,14 @@ pipeline {
             git branch: 'main', url: 'https://github.com/JuanCarlosArizaReyes/node-hello.git'
         }
         post {
-            // If Maven was able to run the tests, even if some of the test
-            // failed, record the test results and archive the jar file.   A
-            success {
+            {
                sh 'echo Success'
             }
         }
     }
     stage('Build') {
       steps {
-        sh 'docker build -t carlospleon/frontend:latest .'
+        sh 'docker build -t JuanCarlosArizaReyes/frontend:sod .'
       }
     }
     stage('Login') {
@@ -29,7 +27,7 @@ pipeline {
     }
     stage('Push') {
       steps {
-        sh 'docker push carlospleon/frontend:latest'
+        sh 'docker push JuanCarlosArizaReyes/frontend:sod'
       }
     }
   }
