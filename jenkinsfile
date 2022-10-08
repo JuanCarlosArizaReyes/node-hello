@@ -26,7 +26,7 @@ pipeline {
         sh 'docker push juanariza123/frontend:sod'
       }
     }
-    stage('Run') {
+        stage('Run') {
       steps {
         sh 'docker run -d -p 8081:3001 frontend:sod'
       }
