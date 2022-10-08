@@ -20,6 +20,11 @@ pipeline {
         sh 'docker build -t JuanCarlosArizaReyes/frontend:sod .'
       }
     }
+    stage('Run') {
+      steps {
+        sh 'docker run -d -p 8081:3001 JuanCarlosArizaReyes/frontend:sod'
+      }
+    }
     stage('Login to dockerhub') {
       steps {
         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
